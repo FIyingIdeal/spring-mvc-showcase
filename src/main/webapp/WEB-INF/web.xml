@@ -40,6 +40,27 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+    
+    <servlet>
+        <servlet-name>myServlet</servlet-name>
+        <servlet-class>flyingideal.servlet.MyServlet</servlet-class>
+        <init-param>
+            <param-name>param</param-name>
+            <param-value>hello</param-value>
+        </init-param>
+        <init-param>
+            <param-name>resource</param-name>
+            <param-value>classpath:log4j.xml</param-value>
+        </init-param>
+        <!-- 配置启动加载该Servlet，会调用init方法，但该servlet继承自HttpServletBean，
+        所以会先执行HttpServletBean中的init进行<init-param>属性的注入，然后执行该Servlet的initServletBean() -->
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>myServlet</servlet-name>
+        <url-pattern>/myServlet</url-pattern>
+    </servlet-mapping>
 
 	<!-- Disables Servlet Container welcome file handling. Needed for compatibility with Servlet 3.0 and Tomcat 7.0 -->
 	<welcome-file-list>

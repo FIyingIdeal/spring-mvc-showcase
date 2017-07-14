@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
+
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven conversion-service="conversionService" enable-matrix-variables="true">
 		<argument-resolvers>
@@ -36,6 +36,10 @@
 		<beans:property name="formatters">
             <beans:bean class="org.springframework.samples.mvc.convert.MaskFormatAnnotationFormatterFactory" />
 		</beans:property>
+
+        <!--<beans:property name="converters">
+            <beans:bean class="org.springframework.samples.mvc.convert.String2DateConverter"/>
+        </beans:property>-->
 	</beans:bean>
 
 	<!-- Only needed because we require fileupload in the org.springframework.samples.mvc.fileupload package -->
@@ -45,5 +49,8 @@
 	<beans:import resource="controllers.xml" />
 
 	<task:annotation-driven />
+
+    <!--yc test-->
+    <beans:bean id="initializingBeanTest" class="org.springframework.samples.mvc.yc.InitializingBeanTest" init-method="initMethod"/>
 	
 </beans:beans>
