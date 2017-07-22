@@ -13,6 +13,11 @@
 		<org.springframework.security-version>4.0.1.RELEASE</org.springframework.security-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
 		<org.slf4j-version>1.7.12</org.slf4j-version>
+        <!--jenkins部署-->
+        <warPackageName>spring-mvc-showcase-jenkins</warPackageName>
+        <tomcat.deploy.server>tomcat9</tomcat.deploy.server>
+        <tomcat.deploy.serverUrl>http://192.168.3.21:8080/manager/text</tomcat.deploy.serverUrl>
+        <!--jenkins部署-->
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -290,6 +295,13 @@
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
+                <!--jenkins部署-->
+                <configuration>
+                    <server>${tomcat.deploy.server}</server>
+                    <url>${tomcat.deploy.serverUrl}</url>
+                    <path>/${warPackageName}</path>
+                </configuration>
+                <!--jenkins部署-->
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
